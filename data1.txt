@@ -1,0 +1,52 @@
+% Code for calculating y = mx + b
+% All machine code in hexidecimal
+%
+% FORMAT
+% ADDRESS DATA BYTE 
+%
+0000 00
+0001 00
+0002 00
+0003 00
+0004 00
+0005 00
+0006 00
+0007 00
+0008 00
+0009 00
+%
+% --- Instruction 2 --- 
+% loadB [10], r1L  		# m
+% data[0A] = m = 2 
+000A 02
+%
+% --- Instruction 1 --- 
+% loadB [11], r0L  		# b
+% data[0B] = b = 15
+000B 0F
+%
+% --- Instruction 3 --- 
+% loadB [12], r2L  		# x
+% data[0C] = x = 0 
+000C 00
+%
+000D 00
+000E 00
+000F 00
+0010 00
+0011 00
+0012 00
+0013 00
+0014 00
+0015 00
+0016 00
+0017 00
+0018 00
+0019 00
+001A 00
+001B 00
+001C 00
+001D 00
+001E 00
+001F 00
+0020 00

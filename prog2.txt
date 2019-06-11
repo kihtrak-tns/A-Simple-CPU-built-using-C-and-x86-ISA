@@ -1,0 +1,61 @@
+% Code for calculating y = mx + b
+% All machine code in hexidecimal
+%
+% FORMAT
+% ADDRESS OPCODES
+%
+% --- Instruction 1 --- 
+% loadB [11], r0L  		# b
+0000 11 00 0B 00
+%
+% --- Instruction 2 --- 
+% loadB [10], r1L  		# m
+0004 11 01 0A 00
+%
+% --- Instruction 3 --- 
+% loadB [12], r2L  		# x
+0008 11 02 0C 00
+%
+% --- Instruction 4 --- 
+% multB r1L, r2L, r3	#  r3 = m*x
+000C 35 21 03 
+%
+% --- Instruction 5 --- 
+% addW r3, r0, r4		# r4 = y = m*x + b
+000F B4 03 04
+%
+% --- Instruction 6 --- 
+%moveW 13, r5			# r5 = y(0) address 
+0012 93 05 0D 00
+%
+% --- Instruction 7 --- 
+%addW r2,r5,r5			# r5 = y(x) address where r2 = x 
+0016 B4 52 05
+%
+% --- Instruction 8 --- 
+%storeW r4, [r5]		# y(x) = m*x + b 
+0019 B2 04 05
+%
+%=== ADDED INSTRUCTION 9 
+% --- Instruction 9 --- 
+%moveW 1,r6				# r6 = 1
+001C 93 06 01 00
+%
+%=== ADDED INSTRUCTION 10 
+% --- Instruction 10 --- 
+%addW r6, r2, r2		# increment x (by adding 1)
+0020 B4 26 02
+%
+%=== ADDED INSTRUCTION 11 
+% --- Instruction 11 --- 
+%jump xx xx				#jump to instruction 4
+%0023 opcode xx xx
+0023 C6 E6 FF 
+% --- Instruction 12  --- 
+%nop
+0026 00
+%
+% --- Instruction 13 --- 
+%halt
+0027 0F
+%
